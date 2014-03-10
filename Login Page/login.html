@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta  name="description" content=""/>
+<meta  name="keywords" content=""/>
+<title>Login Page</title>
+<link rel="shortcut icon" href="" type="image/x-icon" />
+
+<!-- Cascading Style Sheets (CSS) -->
+<link rel="stylesheet" type="text/css" href="css/global.css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<!-- Cascading Style Sheets (CSS) -->
+<!-- Javascript -->
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
+
+<!--Javascript Ends -->
+<!--[if lt IE 9]>
+      <script src="js/modernizr.js"></script>
+      <script src="js/respond.min.js"></script> 
+<![endif]-->
+
+</head>
+<body ng-app="validationApp" ng-controller="mainController">
+<!--Body section starts--> 
+<!-- container starts -->
+<div class="bodywrapper">
+  <div class="container middle-content">
+    <div class="login-content .col-xs-6 .col-sm-4">
+      <div class="please-login">
+        <h3>Please Login</h3>
+      </div>
+      <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
+        <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+          <label>User name*</label>
+          <input type="text" name="name" class="user" ng-model="user.name" required>
+          <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block" >Please Enter Username!</p>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
+          <label>Password*</label>
+          <input type="password" name="password" ng-model="password" class="ng-pristine ng-valid pass" ng-minlength="3" ng-maxlength="10" required>
+          <p ng-show="userForm.password.$error.minlength" class="help-block">Short Password</p>
+          <p ng-show="userForm.password.$error.maxlength" class="help-block">Strong Password</p>
+          <p ng-show="userForm.password.$invalid && !userForm.password.$pristine" class="help-block">Please Enter Password!</p>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="submit-button">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- container ends --> 
+<!--Body section ends -->
+</body>
+</html>
